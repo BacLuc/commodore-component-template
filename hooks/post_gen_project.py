@@ -8,7 +8,6 @@ import yaml
 
 create_lib = "{{ cookiecutter.add_lib }}" == "y"
 add_golden = "{{ cookiecutter.add_golden }}" == "y"
-add_matrix = "{{ cookiecutter.add_matrix }}" == "y"
 automerge_patch = "{{ cookiecutter.automerge_patch }}" == "y"
 automerge_patch_v0 = "{{ cookiecutter.automerge_patch_v0 }}" == "y"
 
@@ -59,10 +58,7 @@ renovatejson = {
 }
 
 if add_golden:
-    if add_matrix:
-        cmd = "make gen-golden-all"
-    else:
-        cmd = "make gen-golden"
+    cmd = "make gen-golden-all"
 
     # Add postUpgradeTask to run make gen-golden(-all) if golden tests are enabled.
     renovatejson["postUpgradeTasks"] = {
