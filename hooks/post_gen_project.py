@@ -58,11 +58,9 @@ renovatejson = {
 }
 
 if add_golden:
-    cmd = "make gen-golden-all"
-
-    # Add postUpgradeTask to run make gen-golden(-all) if golden tests are enabled.
+    # Add postUpgradeTask to run make gen-golden-all if golden tests are enabled.
     renovatejson["postUpgradeTasks"] = {
-        "commands": [cmd],
+        "commands": ["make gen-golden-all"],
         "fileFilters": ["tests/golden/**"],
         "executionMode": "update",
     }
